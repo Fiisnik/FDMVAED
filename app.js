@@ -3,6 +3,9 @@ var app = express();
 var path = require('path');
 var hbs = require('hbs');
 
+const months = ["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"]
+const month = new Date().getMonth();
+
 
 // View Engine Setup
 app.set('views', path.join(__dirname))
@@ -10,7 +13,7 @@ app.set('view engine', 'hbs')
 
 app.get('/', function (req, res) {
 	res.render('./views/Home', {
-		title: 'My new title',
+		title: 'Bienvenu!',
 		cards: [
 			{
 				title: 'Our Changing Planet',
@@ -30,7 +33,8 @@ app.get('/', function (req, res) {
 				desc: 'Visit ten places on our planet that are undergoing the biggest changes today',
 				imageUrl: 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/1.jpg'
 			}
-		]
+		],
+		month: months[month]
 	 })
 });
 
